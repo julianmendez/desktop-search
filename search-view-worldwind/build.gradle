@@ -1,12 +1,8 @@
 dependencies {
     compile project(':search-core')
 
-    compile fileTree(dir: 'libraries/java3d', include: ['*.jar'])
-    compile fileTree(dir: 'libraries/jogl', include: ['*.jar'])
-    compile fileTree(dir: 'libraries/worldwind', include: ['*.jar'])
+    compile fileTree(dir: 'libraries', include: ['**/*.jar'])
 
     // plugin dependencies
-    publish fileTree(dir: 'libraries/java3d', include: ['*.jar'])
-    publish fileTree(dir: 'libraries/jogl', include: ['*.jar'])
-    publish fileTree(dir: 'libraries/worldwind', include: ['*.jar'])
+    publish fileTree(dir: 'libraries', include: ['**/*.jar'])
 }
