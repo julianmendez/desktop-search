@@ -1,0 +1,388 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- @author Julian Mendez -->
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>search-standalone</artifactId>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>search-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>search-handler-tika</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>search-view-worldwind</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>search-installer</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.trove4j</groupId>
+			<artifactId>trove4j</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.sanselan</groupId>
+			<artifactId>sanselan</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.jpathwatch</groupId>
+			<artifactId>jpathwatch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.swinglabs.swingx</groupId>
+			<artifactId>swingx-all</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-facet</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-memory</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-highlighter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-misc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-suggest</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queries</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-backward-codecs</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.izpack</groupId>
+			<artifactId>izpack-standalone-compiler</artifactId>
+		</dependency>
+
+		<!-- local libraries of search-core -->
+
+		<dependency>
+			<groupId>other</groupId>
+			<artifactId>google-georesponse-v1</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>other</groupId>
+			<artifactId>process-wrapper</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>other</groupId>
+			<artifactId>scaling</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>lookandfeel</groupId>
+			<artifactId>synthetica</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>lookandfeel</groupId>
+			<artifactId>syntheticaAddons</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>lookandfeel</groupId>
+			<artifactId>syntheticaSimple2D</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>lookandfeel</groupId>
+			<artifactId>syntheticaSimple2DAddon</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>jgrid</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>jide-oss</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>jxlayer</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>l2fprod-common-all</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>swing-layout</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>swing</groupId>
+			<artifactId>TimingFramework</artifactId>
+		</dependency>
+
+		<!-- local libraries of search-view-worldwind -->
+
+		<dependency>
+			<groupId>java3d</groupId>
+			<artifactId>j3dcore</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>java3d</groupId>
+			<artifactId>j3dutils</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>java3d</groupId>
+			<artifactId>vecmath</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt-natives-linux-amd64</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt-natives-linux-i586</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt-natives-macosx-universal</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>gluegen-rt-natives-windows-i586</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all-natives-linux-amd64</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all-natives-linux-i586</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all-natives-macosx-universal</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all-natives-windows-amd64</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jogl</groupId>
+			<artifactId>jogl-all-natives-windows-i586</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>worldwind</groupId>
+			<artifactId>worldwind</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>worldwind</groupId>
+			<artifactId>worldwindx</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<parent>
+		<groupId>com.semantic</groupId>
+		<artifactId>desktop-search-parent</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<mainClass>com.semantic.ApplicationContext</mainClass>
+
+		<import.package>javax.accessibility,javax.swing,javax.swing.border,org.osgi.framework,*</import.package>
+	</properties>
+
+	<build>
+
+		<finalName>desktop-search</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
+
+					<instructions>
+						<Bundle-SymbolicName>${project.groupId};singleton:=true</Bundle-SymbolicName>
+						<Bundle-Name>desktop search</Bundle-Name>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Bundle-Description>search standalone</Bundle-Description>
+						<Bundle-Vendor>Transinsight GmbH</Bundle-Vendor>
+						<Bundle-DocURL>http://transinsight.com</Bundle-DocURL>
+						<Bundle-ClassPath>.</Bundle-ClassPath>
+						<Import-Package>${import.package}</Import-Package>
+						<Main-Class>${mainClass}</Main-Class>
+						<Include-Resource>
+							{maven-resources}, {maven-dependencies},
+							@search-core-${project.version}.jar,
+							@search-handler-tika-${project.version}.jar,
+							@search-view-worldwind-${project.version}.jar,
+							@search-installer-${project.version}.jar,
+							@trove4j-3.0.3.jar,
+							@sanselan-0.97-incubator.jar,
+							@jpathwatch-0.95.jar,
+							@swingx-all-1.6.5-1.jar,
+							@lucene-core-${luceneVersion}.jar,
+							@lucene-facet-${luceneVersion}.jar,
+							@lucene-analyzers-common-${luceneVersion}.jar,
+							@lucene-memory-${luceneVersion}.jar,
+							@lucene-highlighter-${luceneVersion}.jar,
+							@lucene-misc-${luceneVersion}.jar,
+							@lucene-suggest-${luceneVersion}.jar,
+							@lucene-queryparser-${luceneVersion}.jar,
+							@lucene-queries-${luceneVersion}.jar,
+							@lucene-backward-codecs-${luceneVersion}.jar,
+							@tika-core-1.10.jar,
+							@izpack-standalone-compiler-4.3.5.jar,
+							@google-georesponse-v1-20120731.jar,
+							@process-wrapper-20131129.jar,
+							@scaling-20110729.jar,
+							@synthetica-20131128.jar,
+							@syntheticaAddons-20131206.jar,
+							@syntheticaSimple2D-20130626.jar,
+							@syntheticaSimple2DAddon-20131206.jar,
+							@jgrid-20110927.jar,
+							@jide-oss-20120301.jar,
+							@jxlayer-20081128.jar,
+							@l2fprod-common-all-20070317.jar,
+							@swing-layout-20091027.jar,
+							@TimingFramework-20070904.jar,
+							@j3dcore-20140503.jar,
+							@j3dutils-20140503.jar,
+							@vecmath-20140503.jar,
+							@gluegen-rt-20140415.jar,
+							@gluegen-rt-natives-linux-amd64-20140415.jar,
+							@gluegen-rt-natives-linux-i586-20140415.jar,
+							@gluegen-rt-natives-macosx-universal-20140415.jar,
+							@gluegen-rt-natives-windows-amd64-20140415.jar,
+							@gluegen-rt-natives-windows-i586-20140415.jar,
+							@jogl-all-20140311.jar,
+							@jogl-all-natives-linux-amd64-20140311.jar,
+							@jogl-all-natives-linux-i586-20140311.jar,
+							@jogl-all-natives-macosx-universal-20140311.jar,
+							@jogl-all-natives-windows-amd64-20140311.jar,
+							@jogl-all-natives-windows-i586-20140311.jar,
+							@worldwind-20140430.jar,
+							@worldwindx-20140430.jar
+						</Include-Resource>
+					</instructions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<name>search standalone</name>
+
+</project>
+
+
