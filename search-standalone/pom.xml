@@ -177,8 +177,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>swing</groupId>
-			<artifactId>TimingFramework</artifactId>
+			<groupId>net.java.dev.timingframework</groupId>
+			<artifactId>timingframework</artifactId>
 		</dependency>
 
 		<!-- local libraries of search-view-worldwind -->
@@ -339,7 +339,7 @@
 							@jxlayer-20081128.jar,
 							@l2fprod-common-all-20070317.jar,
 							@swing-layout-20091027.jar,
-							@TimingFramework-20070904.jar,
+							@timingframework-1.0.jar,
 							@j3dcore-20140503.jar,
 							@j3dutils-20140503.jar,
 							@vecmath-20140503.jar,

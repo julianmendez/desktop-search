@@ -146,8 +146,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>swing</groupId>
-			<artifactId>TimingFramework</artifactId>
+			<groupId>net.java.dev.timingframework</groupId>
+			<artifactId>timingframework</artifactId>
 		</dependency>
 
 	</dependencies>
