@@ -160,8 +160,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>swing</groupId>
+			<groupId>org.swinglabs</groupId>
 			<artifactId>jxlayer</artifactId>
+			<classifier>unsigned</classifier>
 		</dependency>
 
 		<dependency>
@@ -342,7 +343,7 @@
 							@syntheticaSimple2DAddon-20131206.jar,
 							@jgrid-20110927.jar,
 							@jide-oss-3.5.11.jar,
-							@jxlayer-20081128.jar,
+							@jxlayer-3.0.3-unsigned.jar,
 							@l2fprod-common-all-20070317.jar,
 							@swing-layout-1.0.3.jar,
 							@timingframework-1.0.jar,
