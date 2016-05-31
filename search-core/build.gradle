@@ -19,6 +19,7 @@ dependencies {
 
     compile "net.java.dev.timingframework:timingframework:1.0"
     compile "com.jidesoft:jide-oss:3.5.11"
+    compile "org.swinglabs:swing-layout:1.0.3"
 
     compile fileTree(dir: 'libraries', include: ['**/*.jar'])
 
