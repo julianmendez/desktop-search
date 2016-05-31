@@ -133,7 +133,6 @@
 		<dependency>
 			<groupId>org.swinglabs</groupId>
 			<artifactId>jxlayer</artifactId>
-			<classifier>unsigned</classifier>
 		</dependency>
 
 		<dependency>
