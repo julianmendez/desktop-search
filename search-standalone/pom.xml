@@ -259,12 +259,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>worldwind</groupId>
+			<groupId>gov.nasa</groupId>
 			<artifactId>worldwind</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>worldwind</groupId>
+			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
 		</dependency>
 
@@ -355,8 +355,8 @@
 							@jogl-all-natives-macosx-universal-20140311.jar,
 							@jogl-all-natives-windows-amd64-20140311.jar,
 							@jogl-all-natives-windows-i586-20140311.jar,
-							@worldwind-20140430.jar,
-							@worldwindx-20140430.jar
+							@worldwind-2.0.0.jar,
+							@worldwindx-2.0.0.jar
 						</Include-Resource>
 					</instructions>
 				</configuration>

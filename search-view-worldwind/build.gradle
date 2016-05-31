@@ -1,8 +1,15 @@
 dependencies {
     compile project(':search-core')
 
+    compile "gov.nasa:worldwind:2.0.0"
+    compile "gov.nasa:worldwindx:2.0.0"
+
     compile fileTree(dir: 'libraries', include: ['**/*.jar'])
 
     // plugin dependencies
+    publish "gov.nasa:worldwind:2.0.0"
+    publish "gov.nasa:worldwindx:2.0.0"
+
     publish fileTree(dir: 'libraries', include: ['**/*.jar'])
 }
+

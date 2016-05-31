@@ -97,12 +97,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>worldwind</groupId>
+			<groupId>gov.nasa</groupId>
 			<artifactId>worldwind</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>worldwind</groupId>
+			<groupId>gov.nasa</groupId>
 			<artifactId>worldwindx</artifactId>
 		</dependency>
 
