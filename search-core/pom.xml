@@ -126,7 +126,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>swing</groupId>
+			<groupId>com.jidesoft</groupId>
 			<artifactId>jide-oss</artifactId>
 		</dependency>
 

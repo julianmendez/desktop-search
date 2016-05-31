@@ -123,7 +123,7 @@
 				<version>4.3.5</version>
 			</dependency>
 
-			<!-- local libraries of search-core -->
+			<!-- libraries of search-core -->
 
 			<dependency>
 				<groupId>other</groupId>
@@ -174,9 +174,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>swing</groupId>
+				<groupId>com.jidesoft</groupId>
 				<artifactId>jide-oss</artifactId>
-				<version>20120301</version>
+				<version>3.5.11</version>
 			</dependency>
 
 			<dependency>
@@ -209,7 +209,7 @@
 				<version>1.0</version>
 			</dependency>
 
-			<!-- local libraries of search-view-worldwind -->
+			<!-- libraries of search-view-worldwind -->
 
 			<dependency>
 				<groupId>java3d</groupId>

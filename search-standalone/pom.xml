@@ -114,8 +114,6 @@
 			<artifactId>izpack-standalone-compiler</artifactId>
 		</dependency>
 
-		<!-- local libraries of search-core -->
-
 		<dependency>
 			<groupId>other</groupId>
 			<artifactId>google-georesponse-v1</artifactId>
@@ -157,7 +155,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>swing</groupId>
+			<groupId>com.jidesoft</groupId>
 			<artifactId>jide-oss</artifactId>
 		</dependency>
 
@@ -180,8 +178,6 @@
 			<groupId>net.java.dev.timingframework</groupId>
 			<artifactId>timingframework</artifactId>
 		</dependency>
-
-		<!-- local libraries of search-view-worldwind -->
 
 		<dependency>
 			<groupId>java3d</groupId>
@@ -345,7 +341,7 @@
 							@syntheticaSimple2D-20130626.jar,
 							@syntheticaSimple2DAddon-20131206.jar,
 							@jgrid-20110927.jar,
-							@jide-oss-20120301.jar,
+							@jide-oss-3.5.11.jar,
 							@jxlayer-20081128.jar,
 							@l2fprod-common-all-20070317.jar,
 							@swing-layout-20091027.jar,
