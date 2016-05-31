@@ -176,7 +176,7 @@
 			<dependency>
 				<groupId>com.jidesoft</groupId>
 				<artifactId>jide-oss</artifactId>
-				<version>3.5.11</version>
+				<version>20120301</version>
 			</dependency>
 
 			<dependency>
