@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>search-standalone</artifactId>
-	<packaging>bundle</packaging>
+	<packaging>jar</packaging>
 
 	<dependencies>
 
@@ -293,80 +293,77 @@
 
 	<build>
 
-		<finalName>desktop-search</finalName>
-
 		<plugins>
 
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Bundle-SymbolicName>${project.groupId};singleton:=true</Bundle-SymbolicName>
-						<Bundle-Name>desktop search</Bundle-Name>
-						<Bundle-Version>${project.version}</Bundle-Version>
-						<Bundle-Description>search standalone</Bundle-Description>
-						<Bundle-Vendor>Transinsight GmbH</Bundle-Vendor>
-						<Bundle-DocURL>http://transinsight.com</Bundle-DocURL>
-						<Bundle-ClassPath>.</Bundle-ClassPath>
-						<Import-Package>${import.package}</Import-Package>
-						<Main-Class>${mainClass}</Main-Class>
-						<Include-Resource>
-							{maven-resources}, {maven-dependencies},
-							@search-core-${project.version}.jar,
-							@search-handler-tika-${project.version}.jar,
-							@search-view-worldwind-${project.version}.jar,
-							@search-installer-${project.version}.jar,
-							@trove4j-3.0.3.jar,
-							@sanselan-0.97-incubator.jar,
-							@jpathwatch-0.95.jar,
-							@swingx-all-1.6.5-1.jar,
-							@lucene-core-${luceneVersion}.jar,
-							@lucene-facet-${luceneVersion}.jar,
-							@lucene-analyzers-common-${luceneVersion}.jar,
-							@lucene-memory-${luceneVersion}.jar,
-							@lucene-highlighter-${luceneVersion}.jar,
-							@lucene-misc-${luceneVersion}.jar,
-							@lucene-suggest-${luceneVersion}.jar,
-							@lucene-queryparser-${luceneVersion}.jar,
-							@lucene-queries-${luceneVersion}.jar,
-							@lucene-backward-codecs-${luceneVersion}.jar,
-							@tika-core-1.10.jar,
-							@izpack-standalone-compiler-4.3.5.jar,
-							@google-georesponse-v1-20120731.jar,
-							@process-wrapper-20131129.jar,
-							@scaling-20110729.jar,
-							@synthetica-20131128.jar,
-							@syntheticaAddons-20131206.jar,
-							@syntheticaSimple2D-20130626.jar,
-							@syntheticaSimple2DAddon-20131206.jar,
-							@jgrid-20110927.jar,
-							@jide-oss-20120301.jar,
-							@jxlayer-3.0.3-unsigned.jar,
-							@l2fprod-common-all-20070317.jar,
-							@swing-layout-1.0.3.jar,
-							@timingframework-1.0.jar,
-							@j3d-core-1.3.1.jar,
-							@j3d-core-utils-1.3.1.jar,
-							@vecmath-1.3.1.jar,
-							@gluegen-rt-2.1.5-01.jar,
-							@gluegen-rt-2.1.5-01-natives-linux-amd64.jar,
-							@gluegen-rt-2.1.5-01-natives-linux-i586.jar,
-							@gluegen-rt-2.1.5-01-natives-macosx-universal.jar,
-							@gluegen-rt-2.1.5-01-natives-windows-amd64.jar,
-							@gluegen-rt-2.1.5-01-natives-windows-i586.jar,
-							@jogl-all-2.1.5-01.jar,
-							@jogl-all-2.1.5-01-natives-linux-amd64.jar,
-							@jogl-all-2.1.5-01-natives-linux-i586.jar,
-							@jogl-all-2.1.5-01-natives-macosx-universal.jar,
-							@jogl-all-2.1.5-01-natives-windows-amd64.jar,
-							@jogl-all-2.1.5-01-natives-windows-i586.jar,
-							@worldwind-2.0.0.jar,
-							@worldwindx-2.0.0.jar
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<executions>
+
+					<execution>
+						<id>library</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<packaging>jar</packaging>
+							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<shadedGroupFilter>com.semantic</shadedGroupFilter>
+							<finalName>desktop-search-library-${project.version}</finalName>
+							<minimizeJar>false</minimizeJar>
+							<filters>
+								<filter>
+									<artifact>*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>standalone</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<createDependencyReducedPom>false</createDependencyReducedPom>
+							<finalName>desktop-search</finalName>
+							<minimizeJar>false</minimizeJar>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<manifestEntries>
+										<Bundle-SymbolicName>${project.groupId};singleton:=true</Bundle-SymbolicName>
+										<Bundle-Name>desktop search</Bundle-Name>
+										<Bundle-Version>${project.version}</Bundle-Version>
+										<Bundle-Description>search standalone</Bundle-Description>
+										<Bundle-Vendor>Transinsight GmbH</Bundle-Vendor>
+										<Bundle-DocURL>http://transinsight.com</Bundle-DocURL>
+										<Bundle-ClassPath>.</Bundle-ClassPath>
+										<Main-Class>${mainClass}</Main-Class>
+									</manifestEntries>
+								</transformer>
+							</transformers>
+							<filters>
+								<filter>
+									<artifact>*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+					</execution>
+
+				</executions>
 			</plugin>
 
 			<plugin>
