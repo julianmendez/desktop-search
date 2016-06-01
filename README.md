@@ -1,4 +1,4 @@
-# desktop-search - [![Build Status](https://travis-ci.org/julianmendez/desktop-search.svg?branch=master)](https://travis-ci.org/julianmendez/desktop-search)
+# desktop-search - [![Build Status](https://travis-ci.org/cxplonka/desktop-search.svg?branch=master)](https://travis-ci.org/cxplonka/desktop-search)
 
 A powerful, hierarchical desktop search engine based on swing and lucene.​​
 * Query-tree based search
