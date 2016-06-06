@@ -468,7 +468,7 @@
 
 	<description>Desktop search</description>
 
-	<url>https://github.com/julianmendez/desktop-search</url>
+	<url>https://github.com/cxplonka/desktop-search</url>
 
 	<inceptionYear>2015</inceptionYear>
 
@@ -496,9 +496,9 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/julianmendez/desktop-search.git</url>
-		<connection>scm:git:https://github.com/julianmendez/desktop-search.git</connection>
-		<developerConnection>scm:git:https://github.com/julianmendez/desktop-search.git</developerConnection>
+		<url>https://github.com/cxplonka/desktop-search.git</url>
+		<connection>scm:git:https://github.com/cxplonka/desktop-search.git</connection>
+		<developerConnection>scm:git:https://github.com/cxplonka/desktop-search.git</developerConnection>
 	</scm>
 
 	<repositories>
