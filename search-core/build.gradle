@@ -19,9 +19,6 @@ dependencies {
     compile "org.apache.lucene:lucene-backward-codecs:${luceneVersion}"
 
     compile "net.java.dev.timingframework:timingframework:1.0"
-    compile "com.jidesoft:jide-oss:3.5.11"
-    compile "org.swinglabs:swing-layout:1.0.3"
-    compile "org.swinglabs:jxlayer:3.0.3"
 
     compile fileTree(dir: 'libraries', include: ['**/*.jar'])
 
@@ -44,9 +41,6 @@ dependencies {
     publish "org.apache.lucene:lucene-backward-codecs:${luceneVersion}"
 
     publish "net.java.dev.timingframework:timingframework:1.0"
-    publish "com.jidesoft:jide-oss:3.5.11"
-    publish "org.swinglabs:swing-layout:1.0.3"
-    publish "org.swinglabs:jxlayer:3.0.3"
 
     publish fileTree(dir: 'libraries', include: ['**/*.jar'])
 
