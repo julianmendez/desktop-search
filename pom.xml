@@ -506,13 +506,13 @@
 		<repository>
 			<id>local_repo_search_core</id>
 			<name>local Maven repository search core</name>
-			<url>file:search-core/libraries/</url>
+			<url>file:${project.basedir}/../search-core/libraries/</url>
 		</repository>
 
 		<repository>
 			<id>local_repo_search_view_worldwind</id>
 			<name>local Maven repository search view worldwind</name>
-			<url>file:search-view-worldwind/libraries/</url>
+			<url>file:${project.basedir}/../search-view-worldwind/libraries/</url>
 		</repository>
 
 	</repositories>
