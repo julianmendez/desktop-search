@@ -1,46 +1,19 @@
+project.ext.worldWindVersion = "2.0.0-986"
+project.ext.joglVersion = "2.1.5-01"
+
 dependencies {
-
-    compile project(':search-core')
-
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01"
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-linux-amd64"
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-linux-i586"
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-macosx-universal"
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-windows-amd64"
-    compile "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-windows-i586"
-
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01"
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01:natives-linux-amd64"
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01:natives-linux-i586"
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01:natives-macosx-universal"
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01:natives-windows-amd64"
-    compile "org.jogamp.jogl:jogl-all:2.1.5-01:natives-windows-i586"
-
-    compile "gov.nasa:worldwind:2.0.0"
-    compile "gov.nasa:worldwindx:2.0.0"
-
-    compile fileTree(dir: 'libraries', include: ['**/*.jar'])
-
+    compile project(':search-core')    
+    
+    compile "gov.nasa:worldwind:${worldWindVersion}"
+    compile "gov.nasa:worldwindx:${worldWindVersion}"
+    
+    compile "org.jogamp.jogl:jogl-all:${joglVersion}"
+    compile "org.jogamp.gluegen:gluegen-rt-main:${joglVersion}"
+    
     // plugin dependencies
-
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01"
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-linux-amd64"
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-linux-i586"
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-macosx-universal"
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-windows-amd64"
-    publish "org.jogamp.gluegen:gluegen-rt:2.1.5-01:natives-windows-i586"
-
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01"
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01:natives-linux-amd64"
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01:natives-linux-i586"
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01:natives-macosx-universal"
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01:natives-windows-amd64"
-    publish "org.jogamp.jogl:jogl-all:2.1.5-01:natives-windows-i586"
-
-    publish "gov.nasa:worldwind:2.0.0"
-    publish "gov.nasa:worldwindx:2.0.0"
-
-    publish fileTree(dir: 'libraries', include: ['**/*.jar'])
-
+    publish "gov.nasa:worldwind:${worldWindVersion}"
+    publish "gov.nasa:worldwindx:${worldWindVersion}"
+    
+    publish "org.jogamp.jogl:jogl-all:${joglVersion}"
+    publish "org.jogamp.gluegen:gluegen-rt-main:${joglVersion}"
 }
-
