@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-/*
+ /*
  * MainFrame.java
  *
  * Created on 15.09.2011, 13:54:09
@@ -14,7 +14,6 @@ import com.semantic.ApplicationContext;
 import com.semantic.eventbus.GenericEventBus;
 import com.semantic.eventbus.GenericEventListener;
 import com.semantic.logging.TextAreaLogHandler;
-import com.semantic.lucene.fields.FileNameField;
 import com.semantic.lucene.task.QueryResultEvent;
 import com.semantic.model.ModelStore;
 import com.semantic.model.OModel;
@@ -43,8 +42,6 @@ import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,18 +49,16 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.TopDocs;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public final class MainFrame extends javax.swing.JFrame implements PropertyChangeListener,
-        GenericEventListener, ListSelectionListener, WindowListener, GlobalKeys {
+        GenericEventListener, WindowListener, GlobalKeys {
 
     protected static final String GRID_ZOOM_FACTOR = "grid.zoom.factor";
     protected static final String ALL_DIVIDER_LOCATION = "all.divider.location";
@@ -88,7 +83,7 @@ public final class MainFrame extends javax.swing.JFrame implements PropertyChang
     private DocumentTreeSelectionHighlighter treeHighlighter;
     private TreeExpansionState expansionState;
     private ThumbnailDatabaseHandle thumbnailHandle;
-    
+
     public MainFrame(ApplicationContext ctx) {
         super();
         initComponents();
@@ -110,20 +105,18 @@ public final class MainFrame extends javax.swing.JFrame implements PropertyChang
         /* layout the 2 dividers */
         cSplit.collapseRight();
         treeHighlighter = new DocumentTreeSelectionHighlighter(
-                controlPanel.getJTree(), lazyDocuments);
+                controlPanel.getJTree(), lazyDocuments, documentPropertyView1);
         /* layout grid view */
         resultView.setLazyList(lazyDocuments);
-        resultView.getGrid().getSelectionModel().addListSelectionListener(this);
         resultView.getGrid().getSelectionModel().addListSelectionListener(treeHighlighter);
         /* list view */
-        resultView.getList().getSelectionModel().addListSelectionListener(this);
         resultView.getList().getSelectionModel().addListSelectionListener(treeHighlighter);
         /* add dummy component into the north of the tree */
         dummyPanel = new DummyPanel();
         dummyPanel.setPreferredSize(resultView.getControlView().getPreferredSize());
         documentPropertyView1.getDummyPanel().setPreferredSize(dummyPanel.getPreferredSize());
         controlPanel.add(dummyPanel, BorderLayout.NORTH);
-        expansionState = new TreeExpansionState(controlPanel.getJTree());        
+        expansionState = new TreeExpansionState(controlPanel.getJTree());
         thumbnailHandle = new ThumbnailDatabaseHandle(lazyDocuments, ThumbnailManager.def()) {
 
             @Override
@@ -224,6 +217,10 @@ public final class MainFrame extends javax.swing.JFrame implements PropertyChang
         /* unregister refresh action */
         SwingUtils.unregisterKeyBoardAction(SwingUtilities.getRootPane(this), refreshAction);
         super.removeNotify();
+    }
+
+    public DocumentTreeSelectionHighlighter getTreeHighlighter() {
+        return treeHighlighter;
     }
 
     public TrayIcon getTrayIcon() {
@@ -356,29 +353,6 @@ public final class MainFrame extends javax.swing.JFrame implements PropertyChang
                 trayIcon.displayMessage(event.getCaption(), event.getText(),
                         event.getMessageType());
             }
-        }
-    }
-
-    @Override
-    public void valueChanged(ListSelectionEvent e) {
-        /* table selection || result selection */
-        if (!e.getValueIsAdjusting()) {
-            ListSelectionModel selectionModel = (ListSelectionModel) e.getSource();
-            List<Document> selections = new ArrayList<Document>();
-            int min = selectionModel.getMinSelectionIndex();
-            /* min = max for one selection */
-            int max = selectionModel.getMaxSelectionIndex() + 1;
-            for (int i = min; i < max; i++) {
-                if (selectionModel.isSelectedIndex(i)) {
-                    /* fetch document */
-                    Document doc = lazyDocuments.get(i);
-                    selections.add(doc);
-                    log.info(String.format("Selected file [%s]", doc.get(FileNameField.NAME)));
-                }
-            }
-            /* document field overview */
-            documentPropertyView1.setSelectedDocuments(
-                    selections.toArray(new Document[selections.size()]));
         }
     }
 

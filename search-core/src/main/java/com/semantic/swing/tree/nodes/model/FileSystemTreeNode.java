@@ -28,7 +28,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Christian
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class FileSystemTreeNode extends OGroupTreeNode<OFileSystem> implements IActionNode {
 
@@ -114,10 +114,8 @@ public class FileSystemTreeNode extends OGroupTreeNode<OFileSystem> implements I
                 IndexManager lucene = ApplicationContext.instance().get(
                         IndexManager.LUCENE_MANAGER);
                 try {
-                    /* delete complete index */
-                    lucene.getIndexWriter().deleteAll();
-                    lucene.getIndexWriter().commit();
-                    lucene.setNeedsUpdate(true);
+                    lucene.reset();
+
                     log.info("Index deleted...");
                     /* collect directories */
                     List<File> sources = new ArrayList<File>();

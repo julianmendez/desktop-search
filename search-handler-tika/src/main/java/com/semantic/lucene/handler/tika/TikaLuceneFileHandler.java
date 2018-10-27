@@ -30,7 +30,7 @@ import org.apache.tika.sax.BodyContentHandler;
 
 /**
  *
- * @author Christian
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class TikaLuceneFileHandler extends LuceneFileHandler {
 
@@ -110,11 +110,6 @@ public class TikaLuceneFileHandler extends LuceneFileHandler {
             }
         }
         return doc;
-    }
-
-    @Override
-    public IFieldProperty get(String field) {
-        return repository.get(field);
     }
 
     @Override

@@ -6,7 +6,7 @@ package com.semantic.util;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class StringUtils {
 
@@ -28,12 +28,16 @@ public class StringUtils {
         }
         return new String(hex);
     }
-    
+
     public static String intToString(int[] array) {
         StringBuilder ret = new StringBuilder();
         for (int i = 0; i < array.length; i++) {
             ret.append(Integer.toString(array[i])).append(' ');
         }
         return ret.toString().trim();
+    }
+
+    public static boolean isEmpty(String value) {
+        return value == null || value.length() == 0 || value.trim().length() == 0;
     }
 }

@@ -12,12 +12,12 @@ import com.semantic.util.property.PropertyMap;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
-public class WorldWindPlugIn extends PropertyMap implements IPlugIn{
+public class WorldWindPlugIn extends PropertyMap implements IPlugIn {
 
     private WorldWindViewAction _viewAction;
-    
+
     @Override
     public void init(Context context) throws Exception {
         /* inject viewaction */

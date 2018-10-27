@@ -8,18 +8,19 @@ package com.semantic.lucene.fields.image;
 import com.semantic.lucene.util.IFieldProperty;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.LongPoint;
+import org.apache.lucene.document.StoredField;
 
 /**
  * ExifIFD0 field TAG_DATETIME (datatype - long)
  *
- * @author Christian
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class ExifDateField implements IFieldProperty<Long> {
 
     public static final String NAME = "image_exif_datetime";
 
     @Override
-    public Class<Long> getClazz() {
+    public Class<Long> getType() {
         return Long.class;
     }
 
@@ -31,5 +32,6 @@ public class ExifDateField implements IFieldProperty<Long> {
     @Override
     public void add(Document doc, Long value) {
         doc.add(new LongPoint(getName(), value));
+        doc.add(new StoredField(getName(), value));
     }
 }

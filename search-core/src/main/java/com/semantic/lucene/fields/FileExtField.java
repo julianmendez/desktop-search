@@ -3,24 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.semantic.lucene.fields;
 
 import com.semantic.lucene.util.IFieldProperty;
+import com.semantic.util.StringUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
+import org.apache.lucene.facet.FacetField;
 
 /**
- * field for file extension (datatype - string) 
- * @author Christian
+ * field for file extension (datatype - string)
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class FileExtField implements IFieldProperty<String> {
 
     public static final String NAME = "file_extension";
 
     @Override
-    public Class<String> getClazz() {
+    public Class<String> getType() {
         return String.class;
     }
 
@@ -31,6 +32,14 @@ public class FileExtField implements IFieldProperty<String> {
 
     @Override
     public void add(Document doc, String value) {
-        doc.add(new StringField(getName(), value, Field.Store.YES));
+        if (!StringUtils.isEmpty(value)) {
+            doc.add(new StringField(getName(), value, Field.Store.YES));
+            doc.add(new FacetField(getName(), value));
+        }
+    }
+
+    @Override
+    public boolean hasFacet() {
+        return true;
     }
 }

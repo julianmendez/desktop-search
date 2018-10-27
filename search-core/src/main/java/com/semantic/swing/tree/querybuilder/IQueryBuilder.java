@@ -9,11 +9,15 @@ import org.apache.lucene.search.Query;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public interface IQueryBuilder {
 
-    public Query createQuery();
+    Query createQuery();
 
-    public BooleanClause.Occur getCondition();
+    BooleanClause.Occur getCondition();
+
+    default boolean isBaseQuery() {
+        return false;
+    }
 }

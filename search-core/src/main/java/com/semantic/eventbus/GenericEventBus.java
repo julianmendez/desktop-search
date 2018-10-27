@@ -6,7 +6,7 @@ package com.semantic.eventbus;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class GenericEventBus {
 
@@ -29,10 +29,11 @@ public class GenericEventBus {
         /* maybe push it to an event bus - executor service */
         if (listeners != null) {
             for (GenericEventListener l : listeners.getListeners((Class) event.getClass())) {
-                try{
+                try {
                     l.handleEvent(event);
-                }catch(Throwable t){
-                }                
+                } catch (Throwable t) {
+                    t.printStackTrace();
+                }
             }
         }
     }

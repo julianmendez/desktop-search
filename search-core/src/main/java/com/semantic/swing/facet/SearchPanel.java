@@ -6,15 +6,13 @@
 package com.semantic.swing.facet;
 
 import com.jidesoft.popup.JidePopup;
-import com.l2fprod.common.swing.ComponentFactory;
-import com.semantic.ApplicationContext;
-import com.semantic.lucene.IndexManager;
 import com.semantic.lucene.fields.ContentField;
-import com.semantic.lucene.fields.SizeField;
 import com.semantic.lucene.fields.LastModifiedField;
+import com.semantic.lucene.fields.SizeField;
 import com.semantic.lucene.task.LuceneQueryTask;
 import com.semantic.lucene.task.QueryResultEvent;
 import com.semantic.swing.ShapedTransculentPopup;
+import com.semantic.swing.UIDefaults;
 import com.semantic.swing.tree.querybuilder.IQueryBuilder;
 import com.semantic.swing.tree.querybuilder.QueryRefreshAction;
 import com.semantic.util.image.TextureManager;
@@ -35,23 +33,16 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.facet.Facets;
-import org.apache.lucene.facet.FacetsCollector;
-import org.apache.lucene.facet.FacetsConfig;
-//import org.apache.lucene.facet.params.FacetSearchParams;
-//import org.apache.lucene.facet.search.CountFacetRequest;
-import org.apache.lucene.facet.taxonomy.FastTaxonomyFacetCounts;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.SortField;
@@ -63,7 +54,7 @@ import org.jdesktop.swingx.prompt.PromptSupport;
 
 /**
  *
- * @author Christian
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
 
@@ -74,8 +65,6 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
     private final FacetJTabbedPane facetPane = new FacetJTabbedPane();
 
     static {
-        // change indexing for lucene 5 http://stackoverflow.com/questions/31451111/lucene-5-sort-problems-uninvertedreader-and-docvalues
-        // http://stackoverflow.com/questions/29695307/sortiing-string-field-alphabetically-in-lucene-5-0
         SORT_BY.put("last modified", new Sort(new SortField(LastModifiedField.NAME,
                 SortField.Type.LONG, true)));
         SORT_BY.put("file size", new Sort(new SortField(SizeField.NAME,
@@ -90,6 +79,7 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
     }
 
     private void initOwnComponents() {
+        jtfSearch.setBorder(UIManager.getBorder(UIDefaults.BORDER_GRID_VIEW));
         jComboBox1.setModel(new MapComboBoxModel(SORT_BY));
         for (Map.Entry<String, Sort> entry : SORT_BY.entrySet()) {
             if (entry.getValue().equals(LuceneQueryTask.SORT)) {
@@ -123,10 +113,9 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
 
         PromptSupport.setPrompt("Search...", jtfSearch);
 
-        JButton button = ComponentFactory.Helper.getFactory().createMiniButton();
-        button.setAction(new FacetAction());
-        BuddySupport.addRight(button, jtfSearch);
-
+//        JButton button = ComponentFactory.Helper.getFactory().createMiniButton();
+//        button.setAction(new FacetAction());
+//        BuddySupport.addRight(button, jtfSearch);
         JList list = new JList(listModel = new DefaultListModel());
         listModel.addListDataListener(new ListDataListener() {
 
@@ -164,21 +153,8 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
     }
 
     private void handleFacet(QueryResultEvent event) {
-        IndexManager lucene = ApplicationContext.instance().get(
-                IndexManager.LUCENE_MANAGER);
-        IndexSearcher searcher = event.getCurrentSearcher();
-        /* facet collector */
-        FacetsCollector c = new FacetsCollector();
         try {
-            searcher.search(event.getQuery(), c);
-
-            FacetsConfig cfg = new FacetsConfig();
-            cfg.setHierarchical("Date", true);
-
-            Facets facets = new FastTaxonomyFacetCounts(
-                    lucene.getTaxoReader(),
-                    cfg, c);
-            facetPane.handleResult(facets);
+            facetPane.handleResult(event);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -197,6 +173,12 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
         jtfSearch = new org.jdesktop.swingx.JXSearchField();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jtfSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -220,6 +202,9 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
@@ -242,13 +227,13 @@ public class SearchPanel extends javax.swing.JPanel implements IQueryBuilder {
         /* */
         if (buffer.length() > 0) {
             /* need take care very much about analyzer */
-            MultiFieldQueryParser parser = new MultiFieldQueryParser(                    
+            MultiFieldQueryParser parser = new MultiFieldQueryParser(
                     new String[]{ContentField.NAME, "dc:creator", "dc:title"},
                     new StandardAnalyzer());
             /* standard analyzed */
             try {
                 ret = new BooleanQuery.Builder();
-                ret.add(parser.parse(buffer.toString()), BooleanClause.Occur.SHOULD);
+                ret.add(parser.parse(buffer.toString()), BooleanClause.Occur.FILTER);
             } catch (ParseException ex) {
                 Logger.getLogger(SearchPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

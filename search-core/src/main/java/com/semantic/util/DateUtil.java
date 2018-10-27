@@ -11,9 +11,15 @@ import java.util.Date;
 
 /**
  *
- * @author cplonka
+ * @author Christian Plonka (cplonka81@gmail.com)
  */
 public class DateUtil {
+
+    private static final SimpleDateFormat formatDefault = new SimpleDateFormat("MM/dd/yy HH:mm aaa");
+
+    public static String formatDate(Date date) {
+        return formatDefault.format(date);
+    }
 
     public static Date parseEXIFFormat(String dateString) {
         /* from metadataextractor */
