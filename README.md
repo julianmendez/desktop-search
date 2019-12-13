@@ -1,8 +1,8 @@
 # desktop-search - [![Build Status](https://travis-ci.org/cxplonka/desktop-search.svg?branch=master)](https://travis-ci.org/cxplonka/desktop-search)
 
-A powerful, hierarchical desktop search engine based on swing and lucene.​​
+A powerful, hierarchical desktop search engine based on swing and lucene.
 * Query-tree based search
-* Full control over search results 
+* Full control over search results
 * Different views for the result (globe rendering, list and grid view)
 * Support all kind of documents and images
 
@@ -14,6 +14,7 @@ and handling of different kind of data.
 ![](https://github.com/cxplonka/desktop-search/blob/master/screenshot1.png)
 
 Icons are taken from: http://franksouza183.deviantart.com/art/FS-Icons-Ubuntu-288407674
+
 
 ## License
 
@@ -38,3 +39,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
